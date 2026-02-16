@@ -1,23 +1,14 @@
 import { Header } from "../components/Header";
-import { useEffect, useState } from "react";
-import axios from "axios";
+
 import "./OrdersPage.css";
 
-export function OrdersPage() {
-  const [cartItems, setCartItemsData] = useState([]);
-
-  useEffect(() => {
-    axios.get("/api/cart-items").then((response) => {
-      console.log(response.data);
-      setCartItemsData(response.data);
-    });
-  }, []);
+export function OrdersPage({ cart }) {
 
   return (
     <>
       <title>Orders</title>
 
-      <Header cart={cartItems} />
+      <Header cart={cart} />
 
       <div className="orders-page">
         <div className="page-title">Your Orders</div>
