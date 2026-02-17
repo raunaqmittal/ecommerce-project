@@ -1,12 +1,26 @@
 import "./CheckoutPage.css";
 import "./checkout-header.css";
+import axios from "axios";
+import dayjs from "dayjs";
+import { useEffect, useState } from "react";
 import { formatMoney } from "../utils/money";
 
 export function CheckoutPage({ cart }) {
+
+  // Calculate total number of items in the cart
   let totalItems = 0;
   for (let i = 0; i < cart.length; i++) {
     totalItems += cart[i].quantity;
   }
+
+  const [deliveryOptions, setDeliveryOptions] = useState([]);
+
+  useEffect(() => {
+    axios.get("/api/delivery-options?expand=estimatedDeliveryTime")
+      .then((response) => {
+        setDeliveryOptions(response.data);
+      });
+  }, []);
 
   return (
     <>
@@ -41,10 +55,12 @@ export function CheckoutPage({ cart }) {
         <div class="checkout-grid">
           <div class="order-summary">
             {cart.map((cartItem) => {
+
+              const selectedDeliveryOption = deliveryOptions.find((option) => option.id === cartItem.deliveryOptionId);
               return (
                 <div key={cartItem.productId} class="cart-item-container">
                   <div class="delivery-date">
-                    Delivery date: Tuesday, June 21
+                    Delivery date: {selectedDeliveryOption ? dayjs(selectedDeliveryOption.estimatedDeliveryTimeMs).format("dddd, MMMM D") : "Not selected"}
                   </div>
 
                   <div class="cart-item-details-grid">
@@ -75,50 +91,31 @@ export function CheckoutPage({ cart }) {
                       <div class="delivery-options-title">
                         Choose a delivery option:
                       </div>
-                      <div class="delivery-option">
+
+                      {deliveryOptions.map((option) => {
+
+                        let priceString = "FREE Shipping";
+                        if (option.priceCents > 0) {
+                          priceString = formatMoney(option.priceCents);
+                        }
+                        return (
+                          <div key={option.id} class="delivery-option">
                         <input
                           type="radio"
-                          checked
-                          class="delivery-option-input"
-                          name="delivery-option-1"
+                          checked = {option.id === cartItem.deliveryOptionId}
+                          className="delivery-option-input"
+                          name={`delivery-option-${cartItem.productId}`}
                         />
                         <div>
                           <div class="delivery-option-date">
-                            Tuesday, June 21
+                            {dayjs(option.estimatedDeliveryTimeMs).format("dddd, MMMM D")}
                           </div>
-                          <div class="delivery-option-price">FREE Shipping</div>
+                          <div class="delivery-option-price">{priceString}</div>
                         </div>
                       </div>
-                      <div class="delivery-option">
-                        <input
-                          type="radio"
-                          class="delivery-option-input"
-                          name="delivery-option-1"
-                        />
-                        <div>
-                          <div class="delivery-option-date">
-                            Wednesday, June 15
-                          </div>
-                          <div class="delivery-option-price">
-                            {formatMoney(499)}
-                          </div>
-                        </div>
-                      </div>
-                      <div class="delivery-option">
-                        <input
-                          type="radio"
-                          class="delivery-option-input"
-                          name="delivery-option-1"
-                        />
-                        <div>
-                          <div class="delivery-option-date">
-                            Monday, June 13
-                          </div>
-                          <div class="delivery-option-price">
-                            {formatMoney(999)}
-                          </div>
-                        </div>
-                      </div>
+                        )
+                      })}
+                    
                     </div>
                   </div>
                 </div>
