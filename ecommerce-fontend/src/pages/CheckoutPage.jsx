@@ -4,6 +4,7 @@ import axios from "axios";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { formatMoney } from "../utils/money";
+import {Link} from "react-router";
 
 export function CheckoutPage({ cart }) {
   // Calculate total number of items in the cart
@@ -34,17 +35,17 @@ export function CheckoutPage({ cart }) {
       <div class="checkout-header">
         <div class="header-content">
           <div class="checkout-header-left-section">
-            <a href="/">
+            <Link to="/">
               <img class="logo" src="images/logo.png" />
               <img class="mobile-logo" src="images/mobile-logo.png" />
-            </a>
+            </Link>
           </div>
 
           <div class="checkout-header-middle-section">
             Checkout (
-            <a class="return-to-home-link" href="/">
+            <Link class="return-to-home-link" to="/">
               {totalItems} items
-            </a>
+            </Link>
             )
           </div>
 
