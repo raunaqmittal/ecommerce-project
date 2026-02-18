@@ -50,8 +50,7 @@ export function CheckoutPage({ cart, getCartItems }) {
         <div class="header-content">
           <div class="checkout-header-left-section">
             <Link to="/">
-              <img class="logo" src="images/logo.png" />
-              <img class="mobile-logo" src="images/mobile-logo.png" />
+              <span style={{ fontSize: '34px', fontWeight: '700', letterSpacing: '0.5px',color:"whitesmoke" }}>E-MART</span>
             </Link>
           </div>
 

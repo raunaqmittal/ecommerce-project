@@ -12,7 +12,6 @@ export function Header({ cart }) {
     <div className="header">
       <div className="left-section">
         <Link to="/" className="header-link">
-          
           <span style={{ fontSize: '34px', fontWeight: '700', letterSpacing: '0.5px',color:"whitesmoke" }}>E-MART</span>
         </Link>
       </div>
