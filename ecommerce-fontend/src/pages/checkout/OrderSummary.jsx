@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import { Link } from "react-router";
 import { DeliveryOptions } from "./DeliveryOptions";
 
-export function OrderSummary({ cart, deliveryOptions }) {
+export function OrderSummary({ cart, deliveryOptions, getCartItems }) {
   return (
     <div class="order-summary">
       {cart.map((cartItem) => {
@@ -42,6 +42,7 @@ export function OrderSummary({ cart, deliveryOptions }) {
               <DeliveryOptions
                 deliveryOptions={deliveryOptions}
                 cartItem={cartItem}
+                getCartItems={getCartItems}
               />
             </div>
           </div>

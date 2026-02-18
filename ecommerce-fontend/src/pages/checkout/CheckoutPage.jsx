@@ -7,7 +7,7 @@ import { PaymentSummary } from "./PaymentSummary";
 import {Link} from "react-router";
 import { OrderSummary } from "./OrderSummary";
 
-export function CheckoutPage({ cart }) {
+export function CheckoutPage({ cart, getCartItems }) {
   // Calculate total number of items in the cart
   let totalItems = 0;
   for (let i = 0; i < cart.length; i++) {
@@ -40,7 +40,7 @@ export function CheckoutPage({ cart }) {
     getDeliveryOptions();
     getPaymentSummary();
 
-  }, []);
+  }, [cart]);
 
   return (
     <>
@@ -73,7 +73,7 @@ export function CheckoutPage({ cart }) {
         <div class="page-title">Review your order</div>
 
         <div class="checkout-grid">
-          <OrderSummary cart={cart} deliveryOptions={deliveryOptions} />
+          <OrderSummary cart={cart} deliveryOptions={deliveryOptions} getCartItems={getCartItems} />
           <PaymentSummary paymentSummary={paymentSummary} />
 
         </div>
