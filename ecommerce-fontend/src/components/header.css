@@ -1,5 +1,6 @@
 .header {
-  background-color: rgb(8, 79, 45);
+  background-color: #1c1c1e;
+  border-bottom: 1px solid #38383a;
   color: white;
   padding-left: 15px;
   padding-right: 15px;
@@ -74,19 +75,21 @@
   height: 38px;
   padding-left: 15px;
   border: none;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  background-color: #2c2c2e;
+  color: #f2f2f7;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
 .header .search-button {
-  background-color: rgb(186, 255, 190);
+  background-color: #2c2c2e;
   border: none;
   width: 45px;
   height: 40px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   flex-shrink: 0;
 }
 
@@ -136,7 +139,7 @@
 }
 
 .header .cart-quantity {
-  color: rgb(8, 79, 45);
+  color: #0a84ff;
   font-size: 14px;
   font-weight: 700;
 

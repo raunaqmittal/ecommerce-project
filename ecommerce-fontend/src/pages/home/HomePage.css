@@ -71,8 +71,9 @@
   padding-left: 25px;
   padding-right: 25px;
 
-  border-right: 1px solid rgb(240, 240, 240);
-  border-bottom: 1px solid rgb(240, 240, 240);
+  background-color: #1c1c1e;
+  border-right: 1px solid #38383a;
+  border-bottom: 1px solid #38383a;
 
   display: flex;
   flex-direction: column;
@@ -92,7 +93,7 @@
      max-width and max-height to 100% to stay inside container. */
   max-width: 100%;
   max-height: 100%;
-  border-radius: 5px;
+  border-radius: 12px;
 }
 
 .home-page .product-name {
@@ -112,7 +113,7 @@
 }
 
 .home-page .product-rating-count {
-  color: rgb(25, 135, 84);
+  color: #8e8e93;
   cursor: auto;
   margin-top: 3px;
 }
@@ -131,7 +132,7 @@
 }
 
 .home-page .added-to-cart {
-  color: rgb(25, 135, 84);
+  color: #0a84ff;
   font-size: 16px;
 
   display: flex;
